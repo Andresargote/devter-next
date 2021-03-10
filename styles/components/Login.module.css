@@ -1,0 +1,18 @@
+.containerLogin {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerLogin h1 {
+  font-size: 30px;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.containerLogin h2 {
+  font-size: 16px;
+  margin-bottom: 20px;
+}

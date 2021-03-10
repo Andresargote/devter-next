@@ -1,0 +1,11 @@
+.article {
+  align-items: flex-start;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  padding: 10px 0px;
+}
+
+.article > div p {
+  margin: 0;
+  line-height: 1.3125;
+}
