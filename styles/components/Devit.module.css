@@ -9,3 +9,8 @@
   margin: 0;
   line-height: 1.3125;
 }
+
+.article > div date {
+  color: #555;
+  font-size: 14px;
+}
