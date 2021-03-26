@@ -11,7 +11,9 @@
   "dependencies": {
     "@react-firebase/auth": "^0.2.10",
     "firebase": "^7.17.1",
+    "firebase-admin": "^9.5.0",
     "next": "10.0.7",
+    "nodemon": "^2.0.7",
     "react": "17.0.1",
     "react-dom": "17.0.1"
   },
@@ -35,5 +37,18 @@
   "lint-staged": {
     "*.js": "eslint --cache --fix",
     "*.{js,css,md}": "prettier --write"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Andresargote/devter-next.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Andresargote/devter-next/issues"
+  },
+  "homepage": "https://github.com/Andresargote/devter-next#readme"
 }

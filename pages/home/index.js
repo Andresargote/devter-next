@@ -4,10 +4,9 @@ import styles from "../../styles/pages/Timeline.module.css"
 
 import Head from "next/head"
 import Link from "next/link"
-import AppLayout from "../../components/AppLayout"
 import Devit from "../../components/Devit"
 import useUser from "../../hooks/useUser"
-import { fetchLatestDevits } from "../../firebase/client"
+import { listenLatestDevit } from "../../firebase/client"
 import Search from "../../components/icons/Search"
 import Create from "../../components/icons/Create"
 import HomeIcon from "../../components/icons/Home"
@@ -17,56 +16,57 @@ export default function Home() {
   const user = useUser()
 
   useEffect(() => {
-    user &&
-      fetchLatestDevits().then((timeline) => {
-        setTimeLine(timeline)
-      })
+    let unsubscribe
+    if (user) {
+      unsubscribe = listenLatestDevit(setTimeLine)
+    }
+
+    return () => unsubscribe && unsubscribe()
   }, [user])
 
   return (
     <>
-      <AppLayout>
-        <Head>
-          <title>Home / Devit</title>
-        </Head>
-        <div className={styles.containerTimeline}>
-          <header>
-            <h1>Inicio</h1>
-          </header>
+      <Head>
+        <title>Home / Devit</title>
+      </Head>
+      <div className={styles.containerTimeline}>
+        <header>
+          <h1>Inicio</h1>
+        </header>
 
-          <section>
-            {timeLine.map((devit) => (
-              <Devit
-                avatar={devit.avatar}
-                createdAt={devit.createdAt}
-                id={devit.id}
-                key={devit.id}
-                content={devit.content}
-                userName={devit.userName}
-                userId={devit.userId}
-              />
-            ))}
-          </section>
+        <section>
+          {timeLine.map((devit) => (
+            <Devit
+              avatar={devit.avatar}
+              createdAt={devit.createdAt}
+              id={devit.id}
+              key={devit.id}
+              content={devit.content}
+              userName={devit.userName}
+              userId={devit.userId}
+              img={devit.img}
+            />
+          ))}
+        </section>
 
-          <nav>
-            <Link href="/home">
-              <a>
-                <HomeIcon width={24} height={24} />
-              </a>
-            </Link>
-            <Link href="/search">
-              <a>
-                <Search width={24} height={24} stroke="#09f" />
-              </a>
-            </Link>
-            <Link href="/compose/devit">
-              <a>
-                <Create width={24} height={24} stroke="#09f" />
-              </a>
-            </Link>
-          </nav>
-        </div>
-      </AppLayout>
+        <nav>
+          <Link href="/home">
+            <a>
+              <HomeIcon width={24} height={24} />
+            </a>
+          </Link>
+          <Link href="/search">
+            <a>
+              <Search width={24} height={24} stroke="#09f" />
+            </a>
+          </Link>
+          <Link href="/compose/devit">
+            <a>
+              <Create width={24} height={24} stroke="#09f" />
+            </a>
+          </Link>
+        </nav>
+      </div>
       <style jsx>
         {`
           nav {

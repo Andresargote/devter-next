@@ -10,7 +10,13 @@
   line-height: 1.3125;
 }
 
-.article > div date {
+.article > div time {
   color: #555;
   font-size: 14px;
+}
+
+.article div .img {
+  height: auto;
+  width: 100%;
+  border-radius: 10px;
 }

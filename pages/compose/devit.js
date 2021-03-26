@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react"
-import AppLayout from "../../components/AppLayout"
 import Button from "../../components/Button"
 import useUser from "../../hooks/useUser"
 import { useRouter } from "next/router"
 
 import Head from "next/head"
 import { addDevit, uploadImage } from "../../firebase/client"
+import Avatar from "../../components/Avatar"
 
 const COMPOSE_STATES = {
   USER_NOT_KNOW: 0,
@@ -32,6 +32,8 @@ export default function Divtit() {
 
   const router = useRouter()
 
+  console.log(user)
+
   useEffect(() => {
     if (task) {
       const onProgress = () => {}
@@ -56,6 +58,7 @@ export default function Divtit() {
       content: message,
       userId: user.id,
       userName: user.name,
+      img: imgURL,
     })
       .then(() => {
         router.push("/home")
@@ -92,10 +95,15 @@ export default function Divtit() {
 
   return (
     <>
-      <AppLayout>
-        <Head>
-          <title>Crear un Devit / Devter</title>
-        </Head>
+      <Head>
+        <title>Crear un Devit / Devter</title>
+      </Head>
+      <section className="form-container">
+        {user && (
+          <section className="avatar-container">
+            <Avatar src={user.avatar} />
+          </section>
+        )}
         <form onSubmit={handleSubmit}>
           <textarea
             onChange={handleMessage}
@@ -106,15 +114,21 @@ export default function Divtit() {
             placeholder="¿Qué está pasando?"
           ></textarea>
           {imgURL && (
-            <section>
+            <section className="remove-img">
               <button onClick={() => setImageURL(null)}>x</button>
               <img src={imgURL} />
             </section>
           )}
-          <Button disabled={isButtonDisabled}>Devetear</Button>
+          <div>
+            <Button disabled={isButtonDisabled}>Devetear</Button>
+          </div>
         </form>
-      </AppLayout>
+      </section>
       <style jsx>{`
+        .form-container {
+          display: flex;
+        }
+
         textarea {
           border: ${drag === DRAG_IMAGE_STATES.DRAG_OVER
             ? "3px dashed #09f"
@@ -140,7 +154,7 @@ export default function Divtit() {
           cursor: pointer;
         }
 
-        section {
+        .remove-img {
           position: relative;
         }
 
