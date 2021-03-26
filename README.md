@@ -32,3 +32,20 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+<h1 align="center">
+    Devter
+</h1>
+
+## Tecnologia
+
+Este proyecto usa:
+
+-Next
+-Firebase
+
+## Proyecto
+
+Devter es un clon de Twitter para desarrolladores.
+
+Este proyecto se desarrollo en la siguiente lista de [reproducción](https://www.youtube.com/watch?v=2jxc8DMzt0I&list=PLV8x_i1fqBw1VR86y4C72xMGJ8ifjBwJ6)
