@@ -6,8 +6,8 @@
 
 Este proyecto usa:
 
--Next
--Firebase
+- Next
+- Firebase
 
 ## Proyecto
 
